@@ -1,0 +1,22 @@
+<div>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon><mat-icon>supervised_user_circle</mat-icon></mat-icon>
+      </button>
+      <span>Indian Railway Admin</span>
+      <span class="example-spacer"></span>
+      <button routerLink="/" mat-raised-button color="warn" (click)="logout()" >LogOut</button>
+      
+    </mat-toolbar>
+  </div>
+<div>
+    <div class="train" style="margin:20px;width:30%;">
+<button routerLink="/admin-site/train-update" mat-raised-button color="primary" >Train Update</button>
+    </div>
+    <div class="station" style="margin:20px;width:30%;">
+        <button mat-raised-button color="accent" routerLink="/admin-site/station-update">Station Update</button>
+    </div>
+    <div class="sch" style="margin:20px;width:30%;">
+        <button mat-raised-button color="warn" routerLink="/admin-site/schedule-update">Schedule Update</button>
+    </div>
+</div>

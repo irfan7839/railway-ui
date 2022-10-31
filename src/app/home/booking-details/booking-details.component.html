@@ -1,0 +1,55 @@
+<app-nav></app-nav>
+<div style="display:flex;margin: 20px;cursor: pointer;" (click)="backBtn()"><mat-icon style="font-size: 30px;font-weight: bolder;">keyboard_backspace</mat-icon><span style="margin:6px">Back</span></div>
+
+<div class="container">
+
+
+        <div class="content">
+            <div class="trainDetail">
+                <h4>{{trainInfo.train_no}}|{{trainInfo.train_name}}</h4>
+                <h4>Duration:{{trainInfo.duration_h}}H {{trainInfo.duration_m}}M</h4>
+                <h4>Runs On: M T W T F S S</h4>
+                
+              </div>
+        </div>
+        <div class="dateStation">
+            <div><strong>{{trainInfo.sourCode}} | </strong> <strong>{{trainInfo.date | date}} | </strong>  <strong>{{trainInfo.source_time}}</strong></div>
+            <div><strong>{{trainInfo.desCode}} | </strong> <strong>{{trainInfo.dest_date | date}} | </strong>  <strong>{{trainInfo.dest_time}}</strong></div>
+          </div>
+      <form  >
+       
+        <div class="content">
+            <h2 style="margin:15px;">Passengers Details</h2>
+            <div class="formContainer" *ngFor="let obj of passArray; let i=index">
+              <mat-form-field  class="form-group" appearance="outline">
+                <input class="input" matInput name="name{{i}}" [(ngModel)]="obj.name" placeholder="Name">
+              </mat-form-field>
+              <mat-form-field class="form-group" appearance="outline">
+                <input class="input"  matInput name="age{{i}}" [(ngModel)]="obj.age" placeholder="Age">
+              </mat-form-field>
+              <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Gender</mat-label>
+                <mat-select name="gender{{i}}" [(ngModel)]="obj.gender">
+                    <mat-option *ngFor="let gender of genderList" [value]="gender.value">
+                        {{gender.viewValue}}
+                      </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="remove" *ngIf="i!=0">
+                <button mat-raised-button style="margin:15px;width:9%;background-color:rgb(248, 50, 15); color:white;"(click)="removeForm(i)"><mat-icon>delete</mat-icon></button>
+              </div>
+                
+               
+               
+             
+            </div>
+            <div>
+              <button mat-raised-button style="margin:15px;width:5%;" color="primary" (click)="addForm()">Add</button>
+              <button mat-raised-button type="submit" style="margin:15px;width:9%;" color="primary"(click)="onSubmit()">Submit</button>
+
+            </div>
+        </div>
+        
+      </form>
+      <app-payment-section></app-payment-section>
+</div>

@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Cancel Ticket </h1>
+<div mat-dialog-content>
+Are you sure you want to cancel?
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button style="margin-left:8px"  color="primary" mat-dialog-close (click)="cancelTicket()" >submit</button>
+
+</div>

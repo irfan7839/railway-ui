@@ -1,0 +1,49 @@
+<app-nav></app-nav>
+<div class="content">
+  <div class="main">
+  <img src="../../assets/images/logo_top_eng-removebg-preview.png" alt="">
+  <h1 style="text-align: center;font-size:45px;color: blue;">BOOK TICKET</h1>
+  <div class="form">
+  <form class="formgroup" [formGroup]="searchForm" (ngSubmit)="getSearchTrain()">
+    
+      <mat-form-field style="width:90%;margin:auto;" appearance="outline">
+        <mat-label>FROM *</mat-label>
+        <mat-select formControlName="source">
+            <mat-option *ngFor="let source of stationList" [value]="source.value">
+                {{source.viewValue}}
+              </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width:90%;margin:auto;" appearance="outline">
+        <mat-label>To *</mat-label>
+        <mat-select formControlName="dest">
+            <mat-option *ngFor="let to of stationList" [value]="to.value">
+                {{to.viewValue}}
+              </mat-option>
+        </mat-select>
+      </mat-form-field>
+   
+    
+      <mat-form-field style="width:90%;;margin:auto;" appearance="outline">
+        <mat-label>--/--/----</mat-label>
+        <input formControlName="date" matInput [min]="todayDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+          <mat-form-field style="width:90%;margin:auto;"  appearance="outline">
+            <mat-label>All Classes</mat-label>
+            <mat-select formControlName="coaches">
+                <mat-option *ngFor="let coach of coachList"  [value]="coach.value">
+                    {{coach.viewValue}}
+                  </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+    <div style="width:90%;margin: auto;">
+      <button mat-raised-button type="submit" [disabled]="searchForm.invalid" style="width:100%;background-color:orange"  >SEARCH</button>
+
+    </div>
+</form>
+</div>
+    </div>
+  </div>

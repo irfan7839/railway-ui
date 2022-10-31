@@ -1,0 +1,59 @@
+
+
+.container{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 35%;
+    border: 1px solid black;
+    background-color: aliceblue;
+}
+
+.matForm{
+    text-align: center;
+   
+
+} 
+
+.main{
+    margin: 10px;
+}
+
+.input {
+    width:90%;
+}
+
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .radio-button {
+    margin: 5px;
+  }
+
+  mat-form-field{
+    width: 100%;
+  }
+
+  a, .form{
+    margin: 15px;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .logo1{
+    width:6%;
+    height:55px;
+  }
+
+
+  .logo2{
+    width:10%;
+    height:55px;
+  }

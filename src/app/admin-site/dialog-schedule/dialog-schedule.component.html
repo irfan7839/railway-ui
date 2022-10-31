@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>add a schedule form</h1>
+<div mat-dialog-content>
+<form [formGroup]="seatForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Train No</mat-label>
+    <mat-select matInput formControlName="train">
+        <mat-option  *ngFor="let source of rawtrainNo" [value]="source.train_no">
+            {{source.train_no}}
+          </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Total Seats 1A</mat-label>
+    <input matInput formControlName="first_ac" placeholder="Station No.">
+  </mat-form-field>
+  <div class="address">
+    <mat-form-field  appearance="outline">
+      <mat-label>Total Seats 2A</mat-label>
+    <input matInput formControlName="second_ac" placeholder="State">
+     
+    </mat-form-field>
+    <mat-form-field  appearance="outline">
+      <mat-label>Total Seats 3A</mat-label>
+    <input matInput formControlName="third_ac" placeholder="Address">
+     
+    </mat-form-field>
+    <mat-form-field  appearance="outline">
+        <mat-label>Total Seats Sleeper</mat-label>
+      <input matInput formControlName="sleeper" placeholder="Address">
+       
+      </mat-form-field>
+      <mat-form-field style="width:46%;margin:10px;" appearance="outline">
+        <mat-label>--/--/----</mat-label>
+        <input formControlName="date" matInput [min]="todayDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+</form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button style="margin-left:8px" color="primary" mat-dialog-close (click)="addSchedule()">{{actionBtn}}</button>
+
+</div>

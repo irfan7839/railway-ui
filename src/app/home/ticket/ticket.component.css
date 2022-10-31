@@ -1,0 +1,33 @@
+.tableContainer {
+  margin: 15px;
+  border: 1px solid black;
+    width: 90%;
+  }
+
+  .trainInf,.tableHead, .dateStation, .tableData{
+    display: flex;
+    margin: 10px;
+  }
+.trainInf,.dateStation,.tableHead{
+  justify-content: space-between;
+}
+  .headName{
+    width:40%;
+  }
+
+  .headGender{
+    width:40%;
+  }
+
+  .headAge{
+    width:40%;
+  }
+
+
+  .rows{
+    margin-left: 20px;
+  }
+
+  .totalPrice{
+    margin: 15px;
+  }

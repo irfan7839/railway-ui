@@ -1,0 +1,54 @@
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .logo1{
+    width:6%;
+    height:55px;
+  }
+
+
+  .logo2{
+    width:10%;
+    height:55px;
+  }
+
+  .content{
+    height: 87vh;
+    margin-top: 10px;
+    /* border: 1px solid black; */
+    background-image: url("../assets/images/railwaybg.jpg"); /* The image used */
+   
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
+
+  .main{
+    width:35%;
+    margin: 15px;
+    padding-top: 20px;
+    height: 75vh;
+    /* border: 1px solid black; */
+    box-shadow: 5px;
+    background-color: white;
+  }
+
+  .book{
+    width:40%;
+    /* border: 1px solid black; */
+  }
+
+  .form{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.input {
+    width:90%;
+}

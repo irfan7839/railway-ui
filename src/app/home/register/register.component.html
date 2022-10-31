@@ -1,0 +1,117 @@
+<div>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon><mat-icon>supervised_user_circle</mat-icon></mat-icon>
+    </button>
+    <span>Indian Railway</span>
+    <span class="example-spacer"></span>
+    <a routerLink="/" style="text-decoration:none;color:orange;margin-right:20px;">Back To Home Page</a>
+    <a class="signInBtn" routerLink="/home/login">SIGN IN</a>
+  </mat-toolbar>
+</div>
+<div class="container">
+  <div class="header">
+    <h1>Create Your Account</h1>
+    
+  </div>
+  <!-- <mat-tab-group mat-align-tabs="start"> -->
+  <!-- <mat-tab label="Basic Details"><div class="container"> -->
+  <div class="main">
+
+
+    <form class="form" [formGroup]="userForm">
+      <div class="username">
+        <mat-form-field class="input1" style="width:45%;margin:10px" appearance="outline">
+          <input class="user_id" matInput  id="user_id" name="name" formControlName="user_id"
+            placeholder="Username">
+        </mat-form-field>
+        
+        <div style="margin:10px;color:red;" *ngIf="errorData?.user_id">{{errorData?.user_id}}</div>
+        <mat-form-field class="input1" style="width:45%;margin:10px" appearance="outline">
+          <input class="inputname" type="password" matInput formControlName="password" placeholder="Password">
+        </mat-form-field>
+      </div>
+      <div>
+        <span *ngIf="user_id &&  user_id.invalid && user_id.touched" style="color:red;margin:15px">Username must be greater than 3 and less than 16</span>
+        <span *ngIf="password &&  password.invalid && password.touched" style="color:red;margin:15px">password must be greater than 5 and less than 16</span>
+      </div>
+     
+
+      <div class="name">
+        <mat-form-field class="input1" appearance="outline">
+          <input class="inputname" matInput formControlName="first_name" placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field class="input1" appearance="outline">
+          <input class="inputname" matInput formControlName="last_name" placeholder="Last Name">
+        </mat-form-field>
+      </div>
+      <div>
+        <span *ngIf="first_name &&  first_name.invalid && first_name.touched" style="color:red;margin:15px">first must be less than 16</span>
+        <span *ngIf="last_name &&  last_name.invalid && last_name.touched" style="color:red;margin:15px">password must be less than 16</span>
+      </div>
+
+      <mat-form-field style="width:93%;margin:10px;" appearance="outline">
+        <mat-label>Security Questions</mat-label>
+        <mat-select formControlName="security_ques">
+          <mat-option *ngFor="let question of questions" [value]="question.value">
+            {{question.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width:93%;margin:10px;" appearance="outline">
+        <input class="inputname" matInput formControlName="security_ans" placeholder="Security Answer">
+      </mat-form-field>
+
+
+
+      <div class="age">
+        <mat-form-field style="width:36%;margin:10px" appearance="outline">
+          <input type="number" formControlName="age" matInput placeholder="Age">
+        </mat-form-field>
+        <mat-radio-group style="width:56%;margin:10px" formControlName="gender" class="radio-group">
+          <mat-radio-button class="radio-button" *ngFor="let gender of genderList" [value]="gender.value">
+            {{gender.viewValue}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <mat-form-field style="width:93%;margin:10px" appearance="outline">
+        <input type="email" class="inputname" matInput formControlName="email" placeholder="Email">
+      </mat-form-field>
+      <div style="margin:10px;color:red;" *ngIf="errorData?.email">{{errorData?.email}}</div>
+      <mat-form-field style="width:93%;margin:10px" appearance="outline">
+        <input type="phone" class="inputname" matInput formControlName="mobile_no" placeholder="Phone">
+      </mat-form-field>
+      <div>
+        <span *ngIf="mobile_no &&  mobile_no.invalid && mobile_no.touched" style="color:red;margin:15px">Mobile number must be of length 10</span> 
+      </div>
+      <div style="margin:10px;color:red;" *ngIf="errorData?.mobile_no">{{errorData?.mobile_no}}</div>
+      <div class="address">
+        <mat-form-field style="width:45%;margin:10px" appearance="outline">
+          <input class="inputname" matInput formControlName="city" placeholder="City">
+        </mat-form-field>
+        <mat-form-field style="width:45%;margin:10px" appearance="outline">
+          <input class="inputname" matInput formControlName="state" placeholder="State">
+        </mat-form-field>
+      </div>
+      <div class="adhar">
+        <mat-form-field style="width:45%;margin:10px" appearance="outline">
+          <input class="inputname" matInput formControlName="pincode" placeholder="Pincode">
+        </mat-form-field>
+        <mat-form-field style="width:45%;margin:10px" appearance="outline">
+          <input class="inputname" matInput formControlName="adhar_no" placeholder="Adhar number">
+        </mat-form-field>
+      </div>
+      <div>
+        <span *ngIf="pincode &&  pincode.invalid && pincode.touched" style="color:red;margin:15px">please enter valid pincode</span>
+        <span *ngIf="adhar_no &&  adhar_no.invalid && adhar_no.touched" style="color:red;margin:15px">please enter valid adhar no.</span>
+      </div>
+    </form>
+    <div class="buttonSubmit">
+
+      <button mat-raised-button style="margin:15px;width:25%;" color="primary" [disabled]="userForm.invalid" (click)="addUser()">Register<mat-icon>
+          arrow_right_alt</mat-icon></button>
+
+    </div>
+  </div>
+</div>

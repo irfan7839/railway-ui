@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>add a Train form</h1>
+<div mat-dialog-content>
+<form [formGroup]="trainForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Train Name</mat-label>
+    <input matInput formControlName="train_name" placeholder="Train Name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Train No.</mat-label>
+    <input matInput formControlName="train_no" placeholder="Train No.">
+  </mat-form-field>
+  <div class="station">
+    <mat-form-field style="width:46%;margin:10px;" appearance="outline">
+      <mat-label>Source</mat-label>
+      <mat-select matInput formControlName="source">
+          <mat-option  *ngFor="let source of rawStationData" [value]="source.station_no">
+              {{source.station_no}}----{{source.station_name}}
+            </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="width:46%;margin:10px;" appearance="outline">
+      <mat-label>Destination</mat-label>
+      <mat-select matInput formControlName="dest">
+          <mat-option *ngFor="let to of rawStationData" [value]="to.station_no">
+            {{to.station_no}}----{{to.station_name}}
+            </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Duration Hours</mat-label>
+      <input matInput formControlName="duration_h" placeholder="Duration Hours">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Duration Minutes</mat-label>
+    <input matInput formControlName="duration_m" placeholder="Duration Minutes">
+</mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Distance</mat-label>
+    <input matInput formControlName="distance" type="number" placeholder="Placeholder">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Source Time</mat-label>
+    <input type="time" matInput formControlName="source_time">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Dest Time</mat-label>
+    <input type="time" matInput formControlName="dest_time">
+  </mat-form-field>
+</form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button style="margin-left:8px" color="primary" mat-dialog-close (click)="addTrain()">{{actionBtn}}</button>
+
+</div>

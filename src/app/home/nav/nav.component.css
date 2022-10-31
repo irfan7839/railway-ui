@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .logo1{
+    width:6%;
+    height:55px;
+  }
+
+
+  .logo2{
+    width:10%;
+    height:55px;
+  }

@@ -1,0 +1,40 @@
+.content{
+    margin-top:15px;
+    padding: 10px;
+    justify-content: space-between;
+    height: 100vh;
+    background-image: url("../../../assets/images/railwaybg.jpg"); /* The image used */
+   
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
+
+  .main{
+    margin: 60px;
+    width:40%;
+    height: 85vh;
+    border: 1px solid black;
+    border-radius:5px;
+    box-shadow: 5px;
+    background-color: white;
+  }
+  .signInBtn{
+    text-decoration: none;
+    color: rgb(10, 22, 190);
+}
+
+img{
+  height:12vh;
+  margin: 25px;
+}
+
+.form,.formgroup{
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin: auto; */
+}
+

@@ -1,0 +1,59 @@
+.content{
+    margin: 15px;
+    width: 97%;
+    border: 1px solid black;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+
+
+  .dateStation{
+    height:80px;
+}
+.trainDetails, .dateStation,.seat{
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dateStation{
+  padding-top: 10px;
+}
+.form-group {
+  margin: 15px;
+}
+
+.formContainer{
+  display: flex;
+}
+
+.remove{
+  margin: 15px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logo1{
+  width:6%;
+  height:55px;
+}
+
+
+.logo2{
+  width:10%;
+  height:55px;
+}
+
+.trainDetail{
+  padding: 10px;
+display: flex;
+justify-content: space-between;
+}

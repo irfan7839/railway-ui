@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>add a Train form</h1>
+<div mat-dialog-content>
+<form [formGroup]="stationForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Station Name</mat-label>
+    <input matInput formControlName="station_name" placeholder="Station Name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Station No.</mat-label>
+    <input matInput formControlName="station_no" placeholder="Station No.">
+  </mat-form-field>
+  <div class="address">
+    <mat-form-field  appearance="outline">
+      <mat-label>State</mat-label>
+    <input matInput formControlName="state" placeholder="State">
+     
+    </mat-form-field>
+    <mat-form-field  appearance="outline">
+      <mat-label>Address</mat-label>
+    <input matInput formControlName="address" placeholder="Address">
+     
+    </mat-form-field>
+  </div>
+
+</form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button style="margin-left:8px" color="primary" mat-dialog-close (click)="addStation()">{{actionBtn}}</button>
+
+</div>

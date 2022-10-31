@@ -1,0 +1,47 @@
+<app-nav></app-nav>
+<div style="display:flex;margin: 20px;cursor: pointer;" (click)="backBtn()"><mat-icon style="font-size: 30px;font-weight: bolder;">keyboard_backspace</mat-icon><span style="margin:6px">Back</span></div>
+
+
+<div class="tableContainer">
+    <div style="display:flex;align-items:center;justify-content: center;">
+        <h2>Ticket Details</h2>
+    </div>
+   
+    <hr>
+    <div>
+    <div class="trainDetails">
+        <div class="trainInf">
+            <span>{{ticketInfo?.train_name}}({{ticketInfo?.train_no}})</span>
+            <span>Runs On: M T W T F S S</span>
+          </div>
+          <div class="main">
+          <div class="dateStation">
+            <div><strong> {{ticketInfo?.source}} | </strong> <strong> {{ticketInfo?.date | date}} </strong>|<strong> {{ticketInfo?.source_time}} </strong></div>
+            <div><strong> {{ticketInfo?.dest}} | </strong> <strong> {{ticketInfo?.dest_date | date}} </strong> | <strong> {{ticketInfo?.dest_time}} </strong></div>
+          </div>
+    </div>
+</div>
+    <div class="tableHead">
+        <h3 class="headName">Name</h3>
+        <h3 class="headGender">Gender</h3>
+        <h3 class="headAge">Age</h3>
+        
+    </div>
+    <div class="tableData" *ngFor="let pass of ticketInfo?.p_id">
+        <div class="tableHead">
+            <p class="headName rows">{{pass.name}}</p>
+            <p class="headGender rows">{{pass.gender}}</p>
+            <p class="headAge rows">{{pass.age}}</p>
+        </div>
+    
+      </div>
+
+      <div class="totalPrice">
+        <h2>Seats: {{ticketInfo?.seats.slice(0,ticketInfo.seats.length-1)}}</h2>
+        <h2>Total Fair: ₹  {{ticketInfo?.totalFair}}</h2>
+      </div>
+</div>
+ 
+
+  
+  

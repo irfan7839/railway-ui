@@ -1,0 +1,125 @@
+<app-nav></app-nav>
+<div style="display:flex;margin: 20px;cursor: pointer;" (click)="backBtn()"><mat-icon style="font-size: 30px;font-weight: bolder;">keyboard_backspace</mat-icon><span style="margin:6px">Back</span></div>
+
+<div class="container">
+    <form [formGroup]="searchForm" (ngSubmit)="getSearchTrain()">
+        <div class="station">
+          <mat-form-field style="width:46%;margin:10px;" appearance="outline">
+            <mat-label>FROM *</mat-label>
+            <mat-select formControlName="source">
+                <mat-option *ngFor="let source of stationList" [value]="source.value">
+                    {{source.viewValue}}
+                  </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field style="width:46%;margin:10px;" appearance="outline">
+            <mat-label>To *</mat-label>
+            <mat-select formControlName="dest">
+                <mat-option *ngFor="let to of stationList" [value]="to.value">
+                    {{to.viewValue}}
+                  </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="station">
+          <mat-form-field style="width:46%;margin:10px;" appearance="outline">
+            <mat-label>--/--/----</mat-label>
+            <input formControlName="date" matInput [min]="todayDate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+              <mat-form-field style="width:46%;margin:10px;"  appearance="outline">
+                <mat-label>All Classes</mat-label>
+                <mat-select formControlName="coaches">
+                    <mat-option *ngFor="let coach of coachList"  [value]="coach.value">
+                        {{coach.viewValue}}
+                      </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;padding: 10px;">
+          <button mat-raised-button [disabled]="searchForm.invalid" style="width:40%;background-color:orange"  >Modify Search</button>
+   
+        </div>
+    </form>
+  </div>
+  <div *ngIf="!testTrainData.length ;else elseBlock" style="display:flex;justify-content:center; align-items: center;margin: 100px;">
+    <h1>No Train Found Between This Route For This Date</h1>
+  </div>
+  <ng-template #elseBlock>
+<div *ngIf="testTrainData.length" style="padding-bottom:10px;width:99%;margin:auto;">
+    <div *ngFor="let data of testTrainData" class="content" >
+      <div class="trainDetails">
+        <h2>{{data.train_name}} | {{data.train_no}}</h2>
+        <h2>Duration:{{data.duration_h}}H {{data.duration_h}}Min</h2>
+
+        <h2>Runs On: M T W T F S S</h2>
+      </div>
+      <div class="main">
+      <div class="dateStation">
+        <div><strong> {{data.source}} | </strong> <strong> {{data.date | date}} </strong>|<strong> {{data.source_time}} </strong></div>
+        <div><strong> {{data.dest}} | </strong> <strong> {{data.dest_date| date}} </strong> | <strong> {{data.dest_time}} </strong></div>
+      </div>
+     
+      <div >
+        <form [formGroup]="fairForm">
+        <mat-button-toggle-group class="togBtn" name="fontStyle" #toggleGroup="matButtonToggleGroup" formControlName="fair"aria-label="Font Style" required>
+          <mat-button-toggle [value]="data.fair_sleeper"> <div class="toggleBtn">
+            <p><b>Sleeper(SL)</b></p>
+            <p><b>Seat Available - {{data.sleeper}}</b></p>
+            <p><b>Fair: ₹ {{data.fair_sleeper}}</b></p>
+  
+          </div>
+        </mat-button-toggle>
+          <mat-button-toggle [value]="data.fair_thirdAc"> 
+            <div  >
+            <p><b>AC 3 TIER(3A)</b></p>
+            <p><b>Seat Available - {{data.third_ac}}</b></p>
+            <p><b>Fair: ₹ {{data.fair_thirdAc}}</b></p>
+          </div>
+        </mat-button-toggle>
+          <mat-button-toggle [value]="data.fair_secondAc">  <div>
+            <p><b>AC 2 TIER(2A)</b></p>
+            <p><b>Seat Available - {{data.second_ac}}</b></p>
+            <p><b>Fair: ₹ {{data.fair_secondAc}}</b></p>
+  
+          </div></mat-button-toggle>
+          <mat-button-toggle [value]="data.fair_firstAc">  <div  >
+            <p><b>AC 1 TIER(1A)</b></p>
+            <p><b>Seat Available - {{data.first_ac}}</b></p>
+            <p><b>Fair: ₹ {{data.fair_firstAc}}</b></p>
+  
+          </div></mat-button-toggle>
+         
+        </mat-button-toggle-group>
+      </form>
+      </div>
+    </div>
+    <div style="display:block;justify-content:flex-start;">
+     
+        <ng-container *ngIf="!userData; else elseif1">
+          <button class="bookBtn" mat-raised-button [routerLink]="['/home/login/']" > Book Now</button>
+        </ng-container>
+        <ng-template #elseif1>
+            <ng-container *ngIf="!toggleGroup.value; else elseif2">
+              <button class="bookBtn"  mat-raised-button (click)="alertText()" disabled > Book Now</button>
+            </ng-container>
+        </ng-template>
+        <ng-template #elseif2>
+            <ng-container *ngIf="toggleGroup.value; else else1">
+              <button class="bookBtn" mat-raised-button [routerLink]="['/home/booking/']" (click)="cellData(data)"> Book Now</button>
+        <span *ngIf="toggleGroup.value" style="font-size:20px;font-weight:bold;"> ₹{{toggleGroup.value}}</span>
+
+            </ng-container>
+        </ng-template>
+        <ng-template #else1>else</ng-template>
+        
+      </div>
+   
+
+    </div>
+  </div>
+</ng-template>
+ 
+    
+

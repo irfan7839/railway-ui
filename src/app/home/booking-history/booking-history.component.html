@@ -1,0 +1,177 @@
+
+<app-nav></app-nav>
+      <div style="display:flex;margin: 20px;cursor: pointer;" (click)="backBtn()"><mat-icon style="font-size: 30px;font-weight: bolder;">keyboard_backspace</mat-icon><span style="margin:6px">Back</span></div>
+
+      <ng-container *ngIf="ticketInfo; else else1" style="display:flex;justify-content:center; align-items: center;margin: auto;">
+        
+        <mat-tab-group  animationDuration="0ms">
+          <mat-tab style="align-items:center;" label="Upcoming Journey">
+            <div class="bodyContainer">
+        
+              
+              
+              
+              
+        
+              <table mat-table [dataSource]="upcomingTicketData" class="mat-elevation-z8">
+              
+                <ng-container matColumnDef="upcomingTicketData">
+                  <td mat-cell *matCellDef="let element">
+                        <mat-accordion>
+                          <mat-expansion-panel (opened)="panelOpenState = true"
+                                               (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                             
+                              <mat-panel-title>
+                                    <span>{{element.train_name}}({{element.train_no}})</span> 
+                             
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                <span>{{element.source}}|{{element.source_time}}</span> 
+              
+              
+                             </mat-panel-description>
+                              <mat-panel-description>
+                                <span>{{element.dest}}|{{element.dest_time}}</span> 
+              
+                             </mat-panel-description>
+                             <mat-panel-description>
+                             
+                              <span>{{element.date}}</span> 
+                            
+                           </mat-panel-description>
+                           <mat-panel-description>
+                             
+                            <span  [ngClass]="{
+                              'class1': element.status=='BOOKED',
+                              'class2': element.status=='Cancelled'
+                           }">{{element.status}}</span> 
+                          
+                         </mat-panel-description>
+                         <mat-panel-description>
+                             <div *ngIf="element.status=='BOOKED'">
+                              <button (click)="getCellTicketId(element.id)">Cancel</button>
+                             </div>
+                         
+                        
+                        
+                       </mat-panel-description>
+                       
+                         
+                            </mat-expansion-panel-header>
+                            <h1 style="text-align:center;">Passenger Details</h1>
+                            <div style="display:flex;justify-content:space-between;">
+                              <p></p>
+                              <p>Name</p>
+                              <p>Gender</p>
+                              <p>Age</p>
+                              <p></p>
+              
+                            </div>
+                            <div *ngFor="let pass of element.p_id">
+                              <div style="display:flex;justify-content:space-between;">
+                              <p></p>
+                                <p>{{pass.name}}</p>
+                                <p>{{pass.gender}}</p>
+                                <p>{{pass.age}}</p>
+                              <p></p>
+              
+                              </div>
+                             
+                            </div>
+                            <h3>Seats: {{element.seats}}</h3>
+                            <h2>Total Amount: ₹ {{element.fare}}</h2>
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                      </td>
+                    </ng-container>
+                      
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                     
+                     
+                      
+              </table>
+                
+              </div>
+          </mat-tab>
+          <mat-tab label="Completd Journey"> <div class="bodyContainer">
+        
+              
+              
+            <!-- <div *ngIf="!completedTicketData" style="display:flex;justify-content:center; align-items: center;margin: auto;">
+            <h1>NO Booking Details Found</h1>
+            </div> -->
+            <table mat-table [dataSource]="completedTicketData" class="mat-elevation-z8">
+            
+              <ng-container matColumnDef="completedTicketData">
+                <td mat-cell *matCellDef="let element">
+                      <mat-accordion>
+                        <mat-expansion-panel (opened)="panelOpenState = true"
+                                             (closed)="panelOpenState = false">
+                          <mat-expansion-panel-header>
+                           
+                            <mat-panel-title>
+                                  <span>{{element.train_name}}({{element.train_no}})</span> 
+                           
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              <span>{{element.source}}|{{element.source_time}}</span> 
+            
+            
+                           </mat-panel-description>
+                            <mat-panel-description>
+                              <span>{{element.dest}}|{{element.dest_time}}</span> 
+            
+                           </mat-panel-description>
+                           <mat-panel-description>
+                           
+                            <span>{{element.date}}</span> 
+                          
+                         </mat-panel-description>
+                         <mat-panel-description>
+                           
+                          <span  [ngClass]="{
+                            'class1': element.status=='BOOKED',
+                            'class2': element.status=='Cancelled'
+                         }">{{element.status}}</span> 
+                        
+                       </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <h1 style="text-align:center;">Passenger Details</h1>
+                          <div style="display:flex;justify-content:space-between;">
+                            <p></p>
+                            <p>Name</p>
+                            <p>Gender</p>
+                            <p>Age</p>
+                            <p></p>
+            
+                          </div>
+                          <div *ngFor="let pass of element.p_id">
+                            <div style="display:flex;justify-content:space-between;">
+                            <p></p>
+                              <p>{{pass.name}}</p>
+                              <p>{{pass.gender}}</p>
+                              <p>{{pass.age}}</p>
+                            <p></p>
+            
+                            </div>
+                           
+                          </div>
+                          <h3>Seats: {{element.seats}}</h3>
+                          <h2>Total Amount: ₹ {{element.fare}}</h2>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                    </td>
+                  </ng-container>
+                    
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                   
+                    
+            </table>
+              
+            </div></mat-tab>
+        </mat-tab-group>
+        </ng-container>
+        <ng-template #else1>
+          <h1>NO Booking Details Found</h1>
+</ng-template>
